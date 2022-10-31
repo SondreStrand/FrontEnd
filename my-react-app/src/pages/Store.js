@@ -1,6 +1,12 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom"
 import '../pages/Store.css'
+import axios from 'axios'
+
+const response =  axios.get(
+    'http://localhost:4000/store/models'
+)
+console.log(response);
 
 
 const Store = () => {
