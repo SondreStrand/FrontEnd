@@ -1,0 +1,6 @@
+ .contact-container > h1 {
+    align-items: center;
+    object-fit: contain;
+    display: flex;
+    flex-direction: column;
+}
