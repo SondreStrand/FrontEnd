@@ -5,10 +5,10 @@ import axios from 'axios'
 
 
 /* A function that is fetching data from a database. */
-axios.get('http://localhost:4000/store/models'
-).then(res => console.table('successfull gather data', console.table(res))
-).catch(err => console.log(err));
-
+// const res = axios.get('http://localhost:4000/store/models')
+//     .then(res => console.table('successfull gather data', console.table(res)))
+//     .then((res) => {this.setState({data: res})})
+//     .catch(err => console.log(err));
 
 
 // /**
@@ -17,6 +17,15 @@ axios.get('http://localhost:4000/store/models'
 //  */
 const Store = () => {
     const navigate = useNavigate();
+    const [results, setResult] = useState([])
+
+/* It's a function that is fetching data from a database. */
+    useEffect( () => {
+        axios.get('http://localhost:4000/store/models')
+        .then(res => console.table('successfull gather data', console.table(res),
+        setResult(res.data)))
+        .catch(err => console.log(err));
+    }, [])
     return(
         <div
             style={{
@@ -30,7 +39,23 @@ const Store = () => {
             <button className='btns' onClick={() => navigate("/Home")}>
                 Tilbake
             </button>
-            
+            {/* It's a table that is showing the data from the database. */}
+            <table>
+                <tr> 
+                    {
+                    results.map(result => <td key={result.model}>
+                        Name: {result.model} - 
+                        Price: NOK {result.price},- - 
+                        Description: {result.description}</td>)
+                    }
+                    {/* {
+                   results.map(result => <td key={result.model}>{result.price}</td>)
+                    }
+                    {
+                   results.map(result => <td key={result.model}>{result.description}</td>)
+                    } */}
+                </tr>
+            </table>    
         </div>
         
     );
