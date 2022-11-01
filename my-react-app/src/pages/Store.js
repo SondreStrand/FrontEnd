@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {useNavigate} from "react-router-dom"
 import '../pages/Store.css'
 import axios from 'axios'
 
-const response =  axios.get(
-    'http://localhost:4000/store/models'
-)
-console.log(response);
+
+/* A function that is fetching data from a database. */
+axios.get('http://localhost:4000/store/models'
+).then(res => console.table('successfull gather data', console.table(res))
+).catch(err => console.log(err));
 
 
+
+// /**
+//  * It's a function that returns a div with a h1 and a button.
+//  * @returns A function that returns a div with a h1 and a button.
+//  */
 const Store = () => {
     const navigate = useNavigate();
     return(
