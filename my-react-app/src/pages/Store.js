@@ -40,20 +40,14 @@ const Store = () => {
                 Tilbake
             </button>
             {/* It's a table that is showing the data from the database. */}
-            <table>
-                <tr> 
+            <table className='products-table'>
+                <tr className='products-info'> 
                     {
-                    results.map(result => <td key={result.model}>
-                        Name: {result.model} - 
-                        Price: NOK {result.price},- - 
-                        Description: {result.description}</td>)
+                    results.map(result => <th key={result.model} >
+                        Produktnavn: {result.model} - 
+                        <td>Pris: NOK {result.price},-</td> - 
+                        <td>Beskrivelse: {result.description}</td></th>)
                     }
-                    {/* {
-                   results.map(result => <td key={result.model}>{result.price}</td>)
-                    }
-                    {
-                   results.map(result => <td key={result.model}>{result.description}</td>)
-                    } */}
                 </tr>
             </table>    
         </div>
