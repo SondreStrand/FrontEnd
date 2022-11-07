@@ -1,34 +1,26 @@
-let mysql = require('mysql')
+import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 
-let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'contactformdatabase'
-});
+export default function GetProductsData(props) {
+    const [results, setResult] = useState([])
 
-export default connection.connect(function(err){
-    if (err) {
-        console.error('Error connecting to database' + err.message)
-        return;
-    }
-    console.log('Connected to database' + connection.threadId)
-    let sql = "SELECT `model`, `price`, `description`, `image` FROM `products`";
-    let values = [];
-    
-    connection.query(sql, function(err, result){
-        if (err) throw err;
-        console.log(result)
-        let values = [result];
-        return values;
-    });
-    connection.end();
-});
-
-axios.post('/Store', {
-    model: model,
-    price: price,
-    description: description,
-    image: image,
-})
+    useEffect( () => {
+        axios.get('http://localhost:4000/store/models')
+        .then(res => console.table('successfull gather data', console.table(res),
+        setResult(res.data)))
+        .catch(err => console.log(err));
+    }, [])
+  return (
+    <div>
+      <p>produxts</p> { 
+      results.map( (result) =>(
+        <ol key = { result.model}>
+          produktnavn: { result.model },
+          pris: { result.price},
+          beskrivelse: { result.description},
+        </ol>
+      ))
+      }
+    </div>
+  )
+}
