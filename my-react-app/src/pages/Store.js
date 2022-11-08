@@ -3,11 +3,11 @@ import {useNavigate} from "react-router-dom"
 import '../pages/Store.css'
 import Main from '../components/cart/Main'
 import Basket from '../components/cart/Basket'
+import data from '../backend/data'
 
 const Store = () => {
     const navigate = useNavigate();
-   
-    
+    const {products} = data;
 /* It's a function that is fetching data from a database. */
 
     return(
@@ -18,7 +18,7 @@ const Store = () => {
             </button>
            
             <div className='row'>
-            <Main>
+            <Main products={products}>
             
             </Main>
             <Basket></Basket>

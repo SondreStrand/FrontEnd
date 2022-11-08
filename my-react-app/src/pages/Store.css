@@ -46,3 +46,7 @@ h3 {
 .row.center {
     align-items: center;
 }
+
+img.small {
+    max-height: 8rem;
+}

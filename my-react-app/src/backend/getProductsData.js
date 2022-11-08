@@ -12,7 +12,7 @@ export default function GetProductsData(props) {
     }, [])
   return (
     <div>
-      <p>produxts</p> { 
+      <p></p> { 
       results.map( (result) =>(
         <ol key = { result.model}>
           produktnavn: { result.model },
