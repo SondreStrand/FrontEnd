@@ -7,7 +7,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Store from './pages/Store';
 import Shopingcart from './pages/Shopingcart';
-
+import Footer from './components/footer/Footer'
 
 /* A function that returns the following: */
 function App() {
@@ -25,7 +25,7 @@ function App() {
           <Route path='/Shopingcart' element={<Shopingcart />} />
         </Routes>
     </Router>
-   
+   <Footer/>
   </>
   );
 }

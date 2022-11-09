@@ -13,9 +13,9 @@ const data = {
                 image: 'images/bicycle-product-image1.jpg'
                 },
                 {id: 8,
-                model: 'sykkel1',
-                pris: 10000,
-                beskrivelse: 'Vår beste sykkel - kompromissløs - for deg som ønsker det best',
+                model: 'sykkel3',
+                pris: 25000,
+                beskrivelse: 'Vår beste sykkel - kompromissløs - for deg som ønsker det beste',
                 image: 'images/bicycle-product-image1.jpg'
                 },
         ],

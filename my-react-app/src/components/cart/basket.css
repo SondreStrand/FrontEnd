@@ -1,0 +1,20 @@
+button.add {
+    background-color: #40c0f0;
+    width: 1.5rem;
+}
+
+.remove {
+    background-color: #f04040;
+    width: 1.5rem;
+}
+
+button.badge {
+    background-color: #f04040;
+    width: 1.5rem;
+    border: none;
+    color: #ffffff;
+}
+
+.text-right {
+    text-align: right;
+}

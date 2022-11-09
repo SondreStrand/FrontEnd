@@ -28,7 +28,7 @@ const Navbar = () => {
             Kontakt oss
           </NavLink>
           <NavBtn>
-            <NavBtnLink to='/Shopingcart'>Handlekurv</NavBtnLink>
+            <NavBtnLink to='/Shopingcart' activestyle>Handlekurv</NavBtnLink>
           </NavBtn>
         </NavMenu>
       </Nav>

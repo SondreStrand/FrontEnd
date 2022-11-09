@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Product(props) {
-    const { product} = props;
+    const { product, onAdd } = props;
   return (
     <div>
         <img className="small" src= {product.image} alt={product.model}></img>
@@ -9,7 +9,7 @@ export default function Product(props) {
         <div>NOK {product.pris}</div>
         <div>{product.beskrivelse}</div>
         <div>
-            <button>Legg til Handlekurv</button>
+            <button onClick={() => onAdd(product)}>Legg til Handlekurv</button>
         </div>
     </div>
   )

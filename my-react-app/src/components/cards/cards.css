@@ -1,6 +1,6 @@
 .cards {
   padding: 4rem;
-  background: #fff;
+  background: rgb(151, 151, 151)
 }
 
 h1 {
@@ -31,6 +31,7 @@ h1 {
   flex: 1;
   margin: 0 1rem;
   border-radius: 10px;
+  background-color: rgb(185, 185, 185);
 }
 
 .cards_item_link {

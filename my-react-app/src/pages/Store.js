@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom"
 import '../pages/Store.css'
 import Main from '../components/cart/Main'
@@ -8,6 +8,27 @@ import data from '../backend/data'
 const Store = () => {
     const navigate = useNavigate();
     const {products} = data;
+    const [cartItems, setCartItems] = useState([]);
+    const onAdd = (product) => {
+        const exist = cartItems.find(x=> x.id === product.id);
+        if (exist) {
+            setCartItems(cartItems.map(x=> x.id === product.id ? {...exist, qty: exist.qty +1} : x
+                )
+            )
+        } else {
+            setCartItems([...cartItems, {...product, qty: 1}])
+        }
+    };
+    const onRemove = (product) => {
+        const exist = cartItems.find((x) => x.id === product.id)
+        if (exist.qty === 1) {
+            setCartItems(cartItems.filter((x) => x.id !== product.id));
+        } else {
+            setCartItems(cartItems.map(x=> x.id === product.id ? {...exist, qty: exist.qty -1} : x
+                )
+            )
+        }
+    }
 /* It's a function that is fetching data from a database. */
 
     return(
@@ -18,10 +39,10 @@ const Store = () => {
             </button>
            
             <div className='row'>
-            <Main products={products}>
+            <Main onAdd={onAdd} products={products}>
             
             </Main>
-            <Basket></Basket>
+            <Basket onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}></Basket>
             </div>
         </div>
         
