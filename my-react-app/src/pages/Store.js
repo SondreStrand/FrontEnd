@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useNavigate} from "react-router-dom"
-import '../pages/Store.css'
+import './Store.css'
 import Main from '../components/cart/Main'
 import Basket from '../components/cart/Basket'
 import data from '../backend/data'
@@ -28,8 +28,10 @@ const Store = () => {
                 )
             )
         }
-    }
-/* It's a function that is fetching data from a database. */
+    };
+    useEffect(()=> {
+        sessionStorage.setItem('cartItems', JSON.stringify(cartItems))
+    }, [cartItems])
 
     return(
         <div>

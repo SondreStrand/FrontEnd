@@ -1,5 +1,6 @@
 import React from 'react'
-
+import '../../pages/Store.css'
+/* A function that returns a div with the product information. */
 export default function Product(props) {
     const { product, onAdd } = props;
   return (
@@ -9,7 +10,7 @@ export default function Product(props) {
         <div>NOK {product.pris}</div>
         <div>{product.beskrivelse}</div>
         <div>
-            <button onClick={() => onAdd(product)}>Legg til Handlekurv</button>
+            <button className='.btns' onClick={() => onAdd(product)}>Legg til Handlekurv</button>
         </div>
     </div>
   )
