@@ -1,6 +1,8 @@
 import React from 'react';
+import {useNavigate} from "react-router-dom"
 
 const About = () => {
+    const navigate = useNavigate();
     return(
         <div
             style={{
@@ -11,7 +13,11 @@ const About = () => {
                 
             }}
         >
+            
             <h1>Vi tilbyr sykler som tar deg videre.</h1>
+            <button className='btns' onClick={() => navigate("/Home")}>
+                Hjem
+            </button>
             <div classname="text-container">
                 <h3>The standard Lorem Ipsum passage, used since the 1500s</h3>
                 <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
