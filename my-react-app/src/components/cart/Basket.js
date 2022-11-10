@@ -4,7 +4,7 @@ import './basket.css'
 export default function Basket(props) {
   const {cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.pris * c.qty, 0)
-  const shippingPrice = itemsPrice >= 20000 ? 0 : 950;
+  const shippingPrice = itemsPrice > 19999 ? 0 : 950;
   const totalPrice = itemsPrice+shippingPrice;
   return (
     <aside className="block col-1">

@@ -50,7 +50,7 @@ const Store = () => {
             <Main onAdd={onAdd} products={products}>
             
             </Main>
-            <Basket onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}></Basket>
+            {/* <Basket onAdd={onAdd} onRemove={onRemove} cartItems={cartItems}></Basket> */}
             </div>
         </div>
         
