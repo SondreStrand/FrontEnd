@@ -10,28 +10,34 @@ const Store = () => {
     const {products} = data;
     const [cartItems, setCartItems] = useState([]);
     const onAdd = (product) => {
-        const exist = cartItems.find(x=> x.id === product.id);
+        const exist = cartItems.find((x)=> x.id === product.id);
         if (exist) {
-            setCartItems(cartItems.map(x=> x.id === product.id ? {...exist, qty: exist.qty +1} : x
+            const newCartItems = cartItems.map(x=> x.id === product.id ? {...exist, qty: exist.qty +1} : x
                 )
-            )
+            setCartItems(newCartItems);
+            localStorage.setItem('cartItems', JSON.stringify(newCartItems))
         } else {
-            setCartItems([...cartItems, {...product, qty: 1}])
+            const newCartItems= [...cartItems, {...product, qty: 1}]
+            setCartItems(newCartItems);
+            localStorage.setItem('cartItems', JSON.stringify(newCartItems))
         }
     };
     const onRemove = (product) => {
         const exist = cartItems.find((x) => x.id === product.id)
         if (exist.qty === 1) {
-            setCartItems(cartItems.filter((x) => x.id !== product.id));
+            const newCartItems= cartItems.filter((x) => x.id !== product.id);
+            setCartItems(newCartItems);
+            localStorage.setItem('cartItems', JSON.stringify(newCartItems))
         } else {
-            setCartItems(cartItems.map(x=> x.id === product.id ? {...exist, qty: exist.qty -1} : x
+            const newCartItems= cartItems.map(x=> x.id === product.id ? {...exist, qty: exist.qty -1} : x
                 )
-            )
+            setCartItems(newCartItems);
+            localStorage.setItem('cartItems', JSON.stringify(newCartItems))
         }
     };
     useEffect(()=> {
-        sessionStorage.setItem('cartItems', JSON.stringify(cartItems))
-    }, [cartItems])
+        setCartItems(localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')): []);
+    }, [])
 
     return(
         <div>
