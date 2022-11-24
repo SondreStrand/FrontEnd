@@ -1,11 +1,15 @@
 button.add {
-    background-color: #40c0f0;
-    width: 1.5rem;
+    background-color: cornflowerblue;
+    width: 5rem;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .remove {
-    background-color: #f04040;
-    width: 1.5rem;
+    background-color: crimson;
+    width: 5rem;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 button.badge {
@@ -17,5 +21,12 @@ button.badge {
 
 .text-right {
     text-align: right;
+}
+
+.buyButton {
+    cursor: pointer;
+    background-color: cornflowerblue;
+    width: 5rem;
+    border-radius: 5px;
 }
 

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState }from 'react'
 import './basket.css'
+import Modal from '../modal/Modal'
 
 export default function Basket(props) {
   const {cartItems, onAdd, onRemove } = props;
   const itemsPrice = cartItems.reduce((a, c) => a + c.pris * c.qty, 0)
   const shippingPrice = itemsPrice > 19999 ? 0 : 950;
   const totalPrice = itemsPrice+shippingPrice;
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <aside className="block col-1">
     <h2>Handlekurv </h2>
@@ -15,10 +17,10 @@ export default function Basket(props) {
         <div className='col-2'>{item.model}</div>
         <div className='col-2'>
           <button onClick={() => onAdd(item)} className='add'>
-            +
+            Legg til
             </button>
           <button onClick={() => onRemove(item)} className='remove'>
-            -
+            Fjern
             </button>
         </div>
         <div className='col-2 text-right'>
@@ -43,7 +45,9 @@ export default function Basket(props) {
       </div>
       <hr/>
         <div className='row'>
-          <button onClick={() => alert('Implement Checkout')}>Kjøp nå</button>
+          {/* <button onClick={() => alert('Implement Checkout')}>Kjøp nå</button> */}
+          <button className='buyButton'onClick={() => {setModalOpen(true)}}>Kjøp nå</button>
+          {modalOpen && <Modal setOpenModal={setModalOpen}/>}
         </div>
       
       </>
