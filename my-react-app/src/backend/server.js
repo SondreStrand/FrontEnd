@@ -51,3 +51,29 @@ const contactEmail = nodemailer.createTransport({
       }
     });
   })
+
+  router.post("purchase", (req, res) => {
+    const firstname = req.body.firstname;
+    const lastname = req.body.lastname;
+    const email = req.body.email;
+    const adress = req.body.adress;
+
+    const purchasemail =  {
+      from: lastname,
+      to: email,
+      subject: "Nytt kjøp fra kunde",
+      html: `<p>firstname: ${firstname}</p>
+      <p>lastname: ${lastname}</p>
+      <p>Email: ${email}</p>
+      <p>adress: ${adress}</p>`,
+    };
+
+    contactEmail.sendMail(purchasemail, (error) => {
+      if (error) {
+        res.json({status: "ERROR"});
+      } else {
+        res.json ({ status : "kjøp utført - Tusen takk"});
+      }
+    });
+
+  });

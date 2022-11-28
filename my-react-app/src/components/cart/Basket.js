@@ -1,6 +1,7 @@
 import React, { useEffect, useState }from 'react'
 import './basket.css'
 import Modal from '../modal/Modal'
+import Purchaseform from '../forms/Purchaseform';
 
 export default function Basket(props) {
   const {cartItems, onAdd, onRemove } = props;
@@ -52,6 +53,7 @@ export default function Basket(props) {
       
       </>
     )}
+    <Purchaseform/>
     </aside>
   )
 }
