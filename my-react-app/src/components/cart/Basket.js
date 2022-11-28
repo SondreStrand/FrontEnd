@@ -47,7 +47,7 @@ export default function Basket(props) {
       <hr/>
         <div className='row'>
           {/* <button onClick={() => alert('Implement Checkout')}>Kjøp nå</button> */}
-          <button className='buyButton'onClick={() => {setModalOpen(true)}}>Kjøp nå</button>
+          <button className='buyButton'onClick={() => {setModalOpen(true)}}>Bestill nå</button>
           {modalOpen && <Modal setOpenModal={setModalOpen}/>}
         </div>
       

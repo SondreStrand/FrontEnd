@@ -12,6 +12,7 @@ const Purchaseform = () => {
             lastname: lastname.value,
             email: email.value,
             adress: adress.value,
+            
         };
 
         let response = await fetch('http://localhost:5000/purchase', {

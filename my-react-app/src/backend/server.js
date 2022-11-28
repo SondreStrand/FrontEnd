@@ -52,11 +52,12 @@ const contactEmail = nodemailer.createTransport({
     });
   })
 
-  router.post("purchase", (req, res) => {
+  router.post("/purchase", (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     const email = req.body.email;
     const adress = req.body.adress;
+    // const product = req.body.product;
 
     const purchasemail =  {
       from: lastname,

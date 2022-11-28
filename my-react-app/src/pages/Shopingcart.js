@@ -41,7 +41,7 @@ const Store = () => {
 
     return(
         <div>
-            <h1>Se vårt utvalg her</h1>
+            <h1>Handlekurv</h1>
             <button className='btns' onClick={() => navigate("/Home")}>
                 Hjem
             </button>
