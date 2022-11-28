@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import '../forms/Contactform.css';
 
 const ContactForm = () => {
+  /* Setting the status to "Send melding" and then it is alerting the result.status. */
   const [status, setStatus] = useState("Send melding");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ const ContactForm = () => {
   };
 /* Returning the form. */
   return (
+    /* A form that is sending the data to the server. */
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="name" required>Navn:</label>

@@ -5,6 +5,7 @@ import './Product.css'
 export default function Product(props) {
     const { product, onAdd } = props;
   return (
+    /* A function that returns a div with the product information. */
     <div>
         <img className="small" src= {product.image} alt={product.model}></img>
         <h3>{product.model}</h3>

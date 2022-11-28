@@ -52,6 +52,7 @@ const contactEmail = nodemailer.createTransport({
     });
   })
 
+  /* A route that the client will use to send the data to the server. */
   router.post("/purchase", (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
@@ -59,6 +60,7 @@ const contactEmail = nodemailer.createTransport({
     const adress = req.body.adress;
     // const product = req.body.product;
 
+    /* Creating a mail object. */
     const purchasemail =  {
       from: lastname,
       to: email,
@@ -69,6 +71,7 @@ const contactEmail = nodemailer.createTransport({
       <p>adress: ${adress}</p>`,
     };
 
+    /* Sending the mail object to the email address. */
     contactEmail.sendMail(purchasemail, (error) => {
       if (error) {
         res.json({status: "ERROR"});

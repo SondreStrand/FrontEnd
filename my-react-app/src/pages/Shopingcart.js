@@ -9,6 +9,11 @@ const Store = () => {
     const navigate = useNavigate();
     const {products} = data;
     const [cartItems, setCartItems] = useState([]);
+    /**
+     * If the product exists in the cart, increase the quantity by 1, otherwise add the product to the
+     * cart.
+     * product - this is the product that is being added to the cart.
+     */
     const onAdd = (product) => {
         const exist = cartItems.find((x)=> x.id === product.id);
         if (exist) {
@@ -22,6 +27,7 @@ const Store = () => {
             localStorage.setItem('cartItems', JSON.stringify(newCartItems))
         }
     };
+    /* A function that is used to remove a product from the cart. */
     const onRemove = (product) => {
         const exist = cartItems.find((x) => x.id === product.id)
         if (exist.qty === 1) {
@@ -35,6 +41,7 @@ const Store = () => {
             localStorage.setItem('cartItems', JSON.stringify(newCartItems))
         }
     };
+    /* A hook that is used to fetch data from the local storage. */
     useEffect(()=> {
         setCartItems(localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')): []);
     }, [])

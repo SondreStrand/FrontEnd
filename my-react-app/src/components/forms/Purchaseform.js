@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+/**
+ * A function that handles the purchase form.
+ */
 const Purchaseform = () => {
     const [status, setStatus] = useState('kjøp');
     const handlesubmit = async (e) => {
@@ -7,6 +10,7 @@ const Purchaseform = () => {
         setStatus('behandler kjøp..');
         const { firstname, lastname, email, adress } = e.target.elements;
 
+        /* Creating an object with the values from the form. */
         let details = {
             firstname: firstname.value,
             lastname: lastname.value,
@@ -15,6 +19,7 @@ const Purchaseform = () => {
             
         };
 
+        /* Sending the data to the server. */
         let response = await fetch('http://localhost:5000/purchase', {
             method: 'POST',
             headers: {
@@ -28,6 +33,7 @@ const Purchaseform = () => {
         alert (result.status);
     };
 
+  /* Returning the form. */
   return (
     <form onSubmit={handlesubmit}>
         <div>

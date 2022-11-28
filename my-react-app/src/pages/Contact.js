@@ -5,6 +5,7 @@ import '../pages/contact.css'
 
 
 const Contact = () => {
+    /* A function that is returning a div with a button that navigates to the home page. */
     const navigate = useNavigate();
     return(
     <>
