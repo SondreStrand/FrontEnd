@@ -5,6 +5,7 @@ import Main from '../components/cart/Main'
 import Basket from '../components/cart/Basket'
 import data from '../backend/data'
 
+/* A function that returns a component. */
 const Store = () => {
     const navigate = useNavigate();
     const {products} = data;
