@@ -1,4 +1,4 @@
-import React, { useState }from 'react'
+import React, { useState, useEffect }from 'react'
 import "./Modal.css";
 
 function Modal( {setOpenModal} ) {
@@ -7,7 +7,9 @@ function Modal( {setOpenModal} ) {
     creates an object with the values from the form. It then creates a response from the server and
     then sets the status to "kjøp" and then it creates a result from the response and then it alerts
     the result. */
+    // const [cartItems, setCartItems] = useState([]);
     const [status, setStatus] = useState('kjøp');
+    const shoppingCart = localStorage.getItem('cartItems')
     const handlesubmit = async (e) => {
         e.preventDefault();
         setStatus('behandler kjøp..');
@@ -20,7 +22,6 @@ function Modal( {setOpenModal} ) {
             lastname: lastname.value,
             email: email.value,
             adress: adress.value,
-            
         };
 
         /* Creating a response from the server. */
@@ -36,6 +37,7 @@ function Modal( {setOpenModal} ) {
         let result = await response.json();
         alert (result.status);
     };
+    
   return (
     <div className="modalBackground">
         <div className="modalContainer">
@@ -53,6 +55,7 @@ function Modal( {setOpenModal} ) {
                 <input htmlfor='lastname' required placeholder='Etternavn' type='text' id='lastname'></input>
                 <input htmlfor='adress' required placeholder='Adresse' type='text' id='adress'></input>
                 <input htmlfor='email' required placeholder='Epost' type='email' id='email'></input>
+                <div >{shoppingCart}</div>
                 </div>
                 {/* <button onClick={() => {alert('Takk for ditt kjøp - ordrebekreftelse blir sendt til din epost adresse')}}>{status}</button> */}
                 

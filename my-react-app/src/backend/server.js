@@ -3,6 +3,7 @@ const router = express.Router();
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 
+
 /* This is the server. */
 const app = express();
 app.use(cors()); //using cors in order to connect services
@@ -51,24 +52,25 @@ const contactEmail = nodemailer.createTransport({
       }
     });
   })
-
+  
   /* A route that the client will use to send the data to the server. */
   router.post("/purchase", (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     const email = req.body.email;
     const adress = req.body.adress;
-    // const product = req.body.product;
-
+    
     /* Creating a mail object. */
     const purchasemail =  {
       from: lastname,
       to: email,
       subject: "Nytt kjøp fra kunde",
-      html: `<p>firstname: ${firstname}</p>
-      <p>lastname: ${lastname}</p>
-      <p>Email: ${email}</p>
-      <p>adress: ${adress}</p>`,
+      html: `
+        <p>firstname: ${firstname}</p>
+        <p>lastname: ${lastname}</p>
+        <p>Email: ${email}</p>
+        <p>adress: ${adress}</p>
+        `,
     };
 
     /* Sending the mail object to the email address. */
