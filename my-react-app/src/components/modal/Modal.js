@@ -1,6 +1,6 @@
 import React, { useState, useEffect }from 'react'
 import "./Modal.css";
-
+import Basket from '../cart/Basket'
 function Modal( {setOpenModal} ) {
     /* A function that is called when the form is submitted. It prevents the default action of the
     form, which is to reload the page. It then sets the status to "behandler kjøp.." and then it
@@ -9,12 +9,13 @@ function Modal( {setOpenModal} ) {
     the result. */
     // const [cartItems, setCartItems] = useState([]);
     const [status, setStatus] = useState('kjøp');
-    const shoppingCart = localStorage.getItem('cartItems')
+    // const shoppingCart = localStorage.getItem('cartItems')
     const handlesubmit = async (e) => {
         e.preventDefault();
         setStatus('behandler kjøp..');
         /* Destructuring the elements from the form. */
-        const { firstname, lastname, email, adress, shoppingCart } = e.target.elements;
+        var shoppingCart = localStorage.getItem('cartItems')
+        const { firstname, lastname, email, adress,  } = e.target.elements;
 
        /* Creating an object with the values from the form. */
         let details = {
@@ -22,7 +23,8 @@ function Modal( {setOpenModal} ) {
             lastname: lastname.value,
             email: email.value,
             adress: adress.value,
-            shoppingCart: shoppingCart.valueOf,
+            shoppingCart: localStorage.getItem('cartItems'),
+            
         };
 
         /* Creating a response from the server. */
@@ -52,11 +54,12 @@ function Modal( {setOpenModal} ) {
                 
             <form onSubmit={handlesubmit}>
                 <div>
-                <input htmlfor='firstname' required placeholder='Fornavn' type='text' id='firstname'></input>
-                <input htmlfor='lastname' required placeholder='Etternavn' type='text' id='lastname'></input>
-                <input htmlfor='adress' required placeholder='Adresse' type='text' id='adress'></input>
-                <input htmlfor='email' required placeholder='Epost' type='email' id='email'></input>
-                <label >{shoppingCart}</label>
+                <input htmlFor='firstname' required placeholder='Fornavn' type='text' id='firstname'></input>
+                <input htmlFor='lastname' required placeholder='Etternavn' type='text' id='lastname'></input>
+                <input htmlFor='adress' required placeholder='Adresse' type='text' id='adress'></input>
+                <input htmlFor='email' required placeholder='Epost' type='email' id='email'></input>
+                <label htmlFor='shoppingCart' id='shoppingCart'></label>
+                
                 </div>
                 {/* <button onClick={() => {alert('Takk for ditt kjøp - ordrebekreftelse blir sendt til din epost adresse')}}>{status}</button> */}
                 

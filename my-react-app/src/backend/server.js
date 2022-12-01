@@ -60,7 +60,7 @@ const contactEmail = nodemailer.createTransport({
     const lastname = req.body.lastname;
     const email = req.body.email;
     const adress = req.body.adress;
-    const shoppingCart = req.body.shoppingCart
+    const shoppingCart = req.body.shoppingCart;
     /* Creating a mail object. */
     const purchasemail =  {
       from: lastname,
@@ -79,8 +79,10 @@ const contactEmail = nodemailer.createTransport({
     contactEmail.sendMail(purchasemail, (error) => {
       if (error) {
         res.json({status: "ERROR"});
+        console.log(error)
       } else {
         res.json ({ status : "kjøp utført - Tusen takk"});
+        console.log(shoppingCart)
       }
     });
 
