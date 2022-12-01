@@ -53,23 +53,25 @@ const contactEmail = nodemailer.createTransport({
     });
   })
   
+  
   /* A route that the client will use to send the data to the server. */
   router.post("/purchase", (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     const email = req.body.email;
     const adress = req.body.adress;
-    
+    const shoppingCart = req.body.shoppingCart
     /* Creating a mail object. */
     const purchasemail =  {
       from: lastname,
       to: email,
-      subject: "Nytt kjøp fra kunde",
+      subject: "Ny bestilling fra kunde",
       html: `
-        <p>firstname: ${firstname}</p>
-        <p>lastname: ${lastname}</p>
+        <p>Fornavn: ${firstname}</p>
+        <p>Etternavn: ${lastname}</p>
         <p>Email: ${email}</p>
-        <p>adress: ${adress}</p>
+        <p>adresse: ${adress}</p>
+        <p>Bestilling: ${shoppingCart}</p>
         `,
     };
 
@@ -83,3 +85,5 @@ const contactEmail = nodemailer.createTransport({
     });
 
   });
+
+ 

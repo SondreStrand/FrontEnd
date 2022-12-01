@@ -14,7 +14,7 @@ function Modal( {setOpenModal} ) {
         e.preventDefault();
         setStatus('behandler kjøp..');
         /* Destructuring the elements from the form. */
-        const { firstname, lastname, email, adress } = e.target.elements;
+        const { firstname, lastname, email, adress, shoppingCart } = e.target.elements;
 
        /* Creating an object with the values from the form. */
         let details = {
@@ -22,6 +22,7 @@ function Modal( {setOpenModal} ) {
             lastname: lastname.value,
             email: email.value,
             adress: adress.value,
+            shoppingCart: shoppingCart.valueOf,
         };
 
         /* Creating a response from the server. */
@@ -55,7 +56,7 @@ function Modal( {setOpenModal} ) {
                 <input htmlfor='lastname' required placeholder='Etternavn' type='text' id='lastname'></input>
                 <input htmlfor='adress' required placeholder='Adresse' type='text' id='adress'></input>
                 <input htmlfor='email' required placeholder='Epost' type='email' id='email'></input>
-                <div >{shoppingCart}</div>
+                <label >{shoppingCart}</label>
                 </div>
                 {/* <button onClick={() => {alert('Takk for ditt kjøp - ordrebekreftelse blir sendt til din epost adresse')}}>{status}</button> */}
                 
