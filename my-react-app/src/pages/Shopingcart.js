@@ -9,6 +9,7 @@ const Store = () => {
     const navigate = useNavigate();
     const {products} = data;
     const [cartItems, setCartItems] = useState([]);
+    
     /**
      * If the product exists in the cart, increase the quantity by 1, otherwise add the product to the
      * cart.
@@ -19,8 +20,10 @@ const Store = () => {
         if (exist) {
             const newCartItems = cartItems.map(x=> x.id === product.id ? {...exist, qty: exist.qty +1} : x
                 )
+            
             setCartItems(newCartItems);
             localStorage.setItem('cartItems', JSON.stringify(newCartItems))
+           
         } else {
             const newCartItems= [...cartItems, {...product, qty: 1}]
             setCartItems(newCartItems);

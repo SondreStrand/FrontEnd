@@ -1,4 +1,5 @@
 const data = {
+       /* An array of objects. */
         products: [
                 {id: 1,
                 model: 'Blodstrupmoen Classic',
