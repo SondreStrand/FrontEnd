@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 const nodemailer = require("nodemailer");
-
+let mysql = require('mysql')
 
 /* This is the server. */
 const app = express();
@@ -29,6 +29,13 @@ const contactEmail = nodemailer.createTransport({
     }
   });
 
+
+  let connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'contactformdatabase'
+});
 /* This is the route that the client will use to send the data to the server. */
   router.post("/contact", (req, res) => {
     const name = req.body.name;
@@ -85,6 +92,18 @@ const contactEmail = nodemailer.createTransport({
         console.log(shoppingCart)
       }
     });
+    connection.connect(function(err){
+      if (err) {
+          console.error('Error connecting to database' + err.message)
+          return;
+      }
+      console.log('Connected to database' + connection.threadId)
+      let sql = `INSERT INTO purchase (product, firstname, lastname, adress, email) VALUES (${shoppingCart}, ${firstname}, ${lastname}, ${adress}, ${email})`;
+      connection.query(sql, function(err, result){
+          if (err) throw err;
+          console.log(result)
+      })
+  });
 
   });
 
