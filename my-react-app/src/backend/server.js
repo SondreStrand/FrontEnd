@@ -98,13 +98,20 @@ const contactEmail = nodemailer.createTransport({
           return;
       }
       console.log('Connected to database' + connection.threadId)
-      let sql = `INSERT INTO purchase (product, firstname, lastname, adress, email) VALUES (${shoppingCart}, ${firstname}, ${lastname}, ${adress}, ${email})`;
-      connection.query(sql, function(err, result){
+      //let sql = `INSERT INTO purchase (product, firstname, lastname, adress, email) VALUES (${shoppingCart}, ${firstname}, ${lastname}, ${adress}, ${email})`;
+      let sqlCustomers = "INSERT INTO `customers`(firstname, lastname, email, address) VALUES (?, ?, ?, ?)"
+      connection.query(sqlCustomers, [firstname, lastname, email, adress], function(err, result){
           if (err) throw err;
           console.log(result)
       })
-  });
 
+      let sqlPurchase = "INSERT INTO `purchase`(firstname, lastname, adress, email, products) VALUES (?, ?, ?, ?, ?)"
+      connection.query(sqlPurchase, [firstname, lastname, adress, email, shoppingCart], function(err, result){
+          if (err) throw err;
+          console.log(result)
+      })
+  })
+  
   });
 
  
