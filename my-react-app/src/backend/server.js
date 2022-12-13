@@ -34,7 +34,7 @@ const contactEmail = nodemailer.createTransport({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'contactformdatabase'
+    database: 'bicycleshopdatabase'
 });
 /* This is the route that the client will use to send the data to the server. */
   router.post("/contact", (req, res) => {
@@ -58,6 +58,20 @@ const contactEmail = nodemailer.createTransport({
         res.json({ status: "Melding sendt - Takk for henvendelsen" });
       }
     });
+    connection.connect(function(err){
+      if (err) {
+          console.error('Error connecting to database' + err.message)
+          return;
+      }
+      console.log('Connected to database' + connection.threadId)
+      //let sql = `INSERT INTO purchase (product, firstname, lastname, adress, email) VALUES (${shoppingCart}, ${firstname}, ${lastname}, ${adress}, ${email})`;
+     
+      let sqlContact = "INSERT INTO `contact`(name, email, message) VALUES (?, ?, ?)"
+      connection.query(sqlContact, [name, email, message], function(err, result){
+          if (err) throw err;
+          console.log(result)
+      })
+  })
   })
   
   
