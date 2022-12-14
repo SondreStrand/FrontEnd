@@ -64,7 +64,7 @@ const contactEmail = nodemailer.createTransport({
           return;
       }
       console.log('Connected to database' + connection.threadId)
-      //let sql = `INSERT INTO purchase (product, firstname, lastname, adress, email) VALUES (${shoppingCart}, ${firstname}, ${lastname}, ${adress}, ${email})`;
+     
      
       let sqlContact = "INSERT INTO `contact`(name, email, message) VALUES (?, ?, ?)"
       connection.query(sqlContact, [name, email, message], function(err, result){
