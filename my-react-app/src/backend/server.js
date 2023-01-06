@@ -16,7 +16,7 @@ const contactEmail = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: "avsluttendeprosjekt@gmail.com",
-      pass: "kdfvzipdadelboxa",
+      pass: "",
     },
   });
   //kdfv zipd adel boxa
